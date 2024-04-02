@@ -1,41 +1,41 @@
 #include <stdio.h>
 
-// ÇÔ¼ö ¼±¾ğ
+// í•¨ìˆ˜ ì„ ì–¸
 int add(int num1, int num2);
 int minus(int num1, int num2);
 int multi(int num1, int num2);
 int div(int num1, int num2);
 
 int main(void) {
-    // º¯¼ö ¼±¾ğ
+    // ë³€ìˆ˜ ì„ ì–¸
     int num1, num2, num1First, num2First, num1Last, num2Last, result1, result2;
     char check, operator;
 
-    // ¹İº¹¹®
+    // ë°˜ë³µë¬¸
     for (;;) {
-        // Ã¹¹øÂ°¿Í µÎ¹øÂ° ¼ıÀÚ¸¦ ÀÔ·Â
-        printf("Ã¹¹øÂ° ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
+        // ì²«ë²ˆì§¸ì™€ ë‘ë²ˆì§¸ ìˆ«ìë¥¼ ì…ë ¥
+        printf("ì²«ë²ˆì§¸ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n");
         scanf("%d", &num1);
-        printf("µÎ¹øÂ° ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
+        printf("ë‘ë²ˆì§¸ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n");
         scanf("%d", &num2);
 
-        // ÀÔ·ÂÇÑ ¼ıÀÚÁß ÇÏ³ª¶óµµ 10 ÀÌÇÏÀÏ °æ¿ì Á¾·á
+        // ì…ë ¥í•œ ìˆ«ìì¤‘ í•˜ë‚˜ë¼ë„ 10 ì´í•˜ì¼ ê²½ìš° ì¢…ë£Œ
         if (num1 <= 10 || num2 <= 10) {
-            printf("10 ¹Ì¸¸ÀÇ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¿© ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.\n");
+            printf("10 ë¯¸ë§Œì˜ ìˆ«ìë¥¼ ì…ë ¥í•˜ì—¬ í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
             return 0;
         }
 
-        // first: ½ÊÀÇÀÚ¸®(ÀÔ·Â°ªÀ» 10À¸·Î ³ª´« ¸ò), Last: ÀÏÀÇ ÀÚ¸®(ÀÔ·Â°ªÀ» 10À¸·Î ³ª´« ÈÄ ³ª¸ÓÁö °ª)
+        // first: ì‹­ì˜ìë¦¬(ì…ë ¥ê°’ì„ 10ìœ¼ë¡œ ë‚˜ëˆˆ ëª«), Last: ì¼ì˜ ìë¦¬(ì…ë ¥ê°’ì„ 10ìœ¼ë¡œ ë‚˜ëˆˆ í›„ ë‚˜ë¨¸ì§€ ê°’)
         num1First = num1 / 10;
         num2First = num2 / 10;
         num1Last = num1 % 10;
         num2Last = num2 % 10;
 
-        // °è»êÇÏ°íÀÚ ÇÏ´Â ¿¬»êÀÚ ÀÔ·Â
-        printf("»ç¿ëÇÒ ¿¬»êÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
+        // ê³„ì‚°í•˜ê³ ì í•˜ëŠ” ì—°ì‚°ì ì…ë ¥
+        printf("ì‚¬ìš©í•  ì—°ì‚°ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n");
         scanf(" %c", &operator);
 
-        // ¿¬»êÀÚ¿¡ µû¶ó ÇÔ¼ö È£Ãâ
+        // ì—°ì‚°ìì— ë”°ë¼ í•¨ìˆ˜ í˜¸ì¶œ
         if (operator == '+') {
             result1 = add(num1First, num2First);
             result2 = add(num1Last, num2Last);
@@ -49,21 +49,20 @@ int main(void) {
             result1 = div(num1First, num2First);
             result2 = div(num1Last, num2Last);
         } else {
-            // ¾î¶°ÇÑ ¿¬»êÀÚµµ ¾Æ´Ò°æ¿ì Á¾·á
-            printf("¿Ã¹Ù¸£Áö ¾ÊÀº ¿¬»êÀÚÀÔ´Ï´Ù.\n");
+            // ì–´ë– í•œ ì—°ì‚°ìë„ ì•„ë‹ê²½ìš° ì¢…ë£Œ
+            printf("ì˜¬ë°”ë¥´ì§€ ì•Šì€ ì—°ì‚°ìì…ë‹ˆë‹¤.\n");
             return 0;
         }
 
-        // °è»ê °á°ú °ª Ãâ·Â
-        printf("¾ÕÀÚ¸® ÇÕ: %d %c %d = %d\nµŞÀÚ¸® ÇÕ: %d %c %d = %d\n", num1First, operator, num2First, result1, num1Last, operator, num2Last, result2);
+        // ê³„ì‚° ê²°ê³¼ ê°’ ì¶œë ¥
+        printf("ì•ìë¦¬ í•©: %d %c %d = %d\në’·ìë¦¬ í•©: %d %c %d = %d\n", num1First, operator, num2First, result1, num1Last, operator, num2Last, result2);
 
-        // Á¾·á, Àç½ÇÇà
-        printf("ÇÁ·Î±×·¥À» Á¾·áÇÏ·Á¸é Y, Àç½ÃÀÛÇÏ·Á¸é ¾Æ¹«Å°¸¦ ´­·¯ÁÖ¼¼¿ä.\n");
+        // ì¢…ë£Œ, ì¬ì‹¤í–‰
+        printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•˜ë ¤ë©´ Y, ì¬ì‹œì‘í•˜ë ¤ë©´ ì•„ë¬´í‚¤ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.\n");
         scanf(" %c", &check);
 
-        // Y¶Ç´Ây¸¦ ´©¸¥ °æ¿ì Á¾·á
+        // Yë˜ëŠ”yë¥¼ ëˆ„ë¥¸ ê²½ìš° ì¢…ë£Œ
         if (check == 'y' || check == 'Y') {
-            printf("ÇÁ·Î±×·¥À» Á¾·áÇÏ¿´½À´Ï´Ù.");
             return 0;
         }
 
